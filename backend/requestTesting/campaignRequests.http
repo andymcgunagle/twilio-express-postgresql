@@ -1,0 +1,63 @@
+### Get current user
+Get  http://localhost:8080/api/users/current
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+### Create new campaign
+POST  http://localhost:8080/api/campaigns
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+{
+    "campaignName": "Today's campaign!"
+}
+
+### Get all campaigns associated with user
+Get  http://localhost:8080/api/campaigns
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+### Post new text to specific campaign
+POST  http://localhost:8080/api/campaigns/1/add-text
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+{
+    "content": "My second text!",
+    "sendDay": 1,
+    "sendHour": 0,
+    "sendMinute": 0
+}
+
+### Get all texts in a specific campaign
+Get  http://localhost:8080/api/campaigns/1
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+### Update name of existing campaign
+PUT  http://localhost:8080/api/campaigns/3
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+{
+    "campaignName": "My UPDATED third campaign!"
+}
+
+### Delete campaign
+DELETE http://localhost:8080/api/campaigns/2
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+### Enroll contacts in campaign
+POST  http://localhost:8080/api/campaigns/1/enroll
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+{
+    "contactsToEnroll": [
+        {
+            "contactId": 4, 
+            "timeZone": "pacific"
+        }
+    ]
+}

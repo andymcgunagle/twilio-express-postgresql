@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "twilio_express_postgresql_db@localhost",
+      "database": "twilio_express_postgresql_db",
+      "username": "andrewmcgunagle",
+      "password": ""
+    }
+  ]
+}
