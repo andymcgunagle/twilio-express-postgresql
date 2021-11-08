@@ -1,22 +1,19 @@
-import pool from "../database/databasePool.js";
 import sendScheduledTexts from "./sendScheduledTexts.js";
+import { setMilliseconds } from 'date-fns';
+import { getScheduledTexts } from "../database/queries.js";
 
 const queryScheduledTexts = async () => {
   try {
-    const currentDate = new Date();
+    let currentDate = setMilliseconds(new Date(), 0);
 
-    let scheduledTexts = await pool.query(`
-      SELECT *
-      FROM scheduled_texts
-      WHERE send_date = $1;
-    `, [currentDate]);
+    const scheduledTexts = await getScheduledTexts(currentDate.toISOString());
 
-    sendScheduledTexts(scheduledTexts.rows);
+    if (scheduledTexts.rowCount !== 0) {
+      sendScheduledTexts(scheduledTexts.rows);
+    };
   } catch (error) {
     console.error(`\n🆘 in queryScheduledTexts: ${error} \n`);
   };
 };
-
-queryScheduledTexts();
 
 export default queryScheduledTexts;

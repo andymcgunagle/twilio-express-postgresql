@@ -7,8 +7,11 @@ const sendScheduledTexts = (scheduledTexts) => {
   scheduledTexts.forEach(async (scheduledText) => {
     const { contact_id, text_id } = scheduledText;
 
-    const phoneNumber = getContactPhoneNumber(contact_id);
-    const textContent = getTextContent(text_id);
+    let phoneNumber = await getContactPhoneNumber(contact_id);
+    phoneNumber = phoneNumber.rows[0].phone_number;
+
+    let textContent = await getTextContent(text_id);
+    textContent = textContent.rows[0].content;
 
     try {
       const message = await client.messages.create({
@@ -20,7 +23,7 @@ const sendScheduledTexts = (scheduledTexts) => {
         // statusCallback: `http://localhost:8080/some-endpoint`,
       });
 
-      console.log(`\n📲 messageSid ${message.sid} to ${contact.firstName} has been ${message.status}`);
+      console.log(`\n📲 messageSid ${message.sid} to ${phoneNumber} has been ${message.status}`);
     } catch (error) {
       console.error(`\n🆘 in scheduledTexts.forEach: ${error}\n`);
     };

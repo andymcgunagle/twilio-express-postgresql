@@ -64,13 +64,4 @@ const generateSendDate = (text, timeZone) => {
   return sendDate;
 };
 
-// const myText = {
-//   send_day: 1,
-//   send_hour: 9,
-//   send_minute: 29,
-// };
-
-// console.log(new Date().toISOString());
-// console.log(generateSendDate(myText, 'eastern'));
-
 export default generateSendDate;
