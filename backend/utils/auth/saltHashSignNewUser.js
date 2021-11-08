@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrpyt from 'bcryptjs';
-import pool from '../database/databasePool.js';
+import pool from '../../database/databasePool.js';
 
 const saltHashSignNewUser = async (inputEmail, inputPassword, res) => {
   try {

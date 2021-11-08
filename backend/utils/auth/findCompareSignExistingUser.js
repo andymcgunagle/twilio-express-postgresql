@@ -1,6 +1,6 @@
 import bcrpyt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import pool from '../database/databasePool.js';
+import pool from '../../database/databasePool.js';
 
 const findCompareSignExistingUser = async (email, password, res) => {
   try {

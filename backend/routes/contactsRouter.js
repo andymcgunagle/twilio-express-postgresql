@@ -1,6 +1,6 @@
 import express from 'express';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
-import pool from '../utils/database/databasePool.js';
+import pool from '../database/databasePool.js';
 
 const contactsRouter = express.Router();
 

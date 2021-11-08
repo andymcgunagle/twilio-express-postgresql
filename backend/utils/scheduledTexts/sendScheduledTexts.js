@@ -1,5 +1,5 @@
 import Twilio from 'twilio';
-import { getContactPhoneNumber, getTextContent } from '../database/queries.js';
+import { getContactPhoneNumber, getTextContent } from '../../database/queries/campaignQueries.js';
 
 const sendScheduledTexts = (scheduledTexts) => {
   const client = new Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
