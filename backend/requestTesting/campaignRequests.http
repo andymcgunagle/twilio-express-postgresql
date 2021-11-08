@@ -1,12 +1,12 @@
 ### Get current user
 Get  http://localhost:8080/api/users/current
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 ### Create new campaign
 POST  http://localhost:8080/api/campaigns
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 {
     "campaignName": "Today's campaign!"
@@ -15,29 +15,29 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwM
 ### Get all campaigns associated with user
 Get  http://localhost:8080/api/campaigns
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 ### Post new text to specific campaign
 POST  http://localhost:8080/api/campaigns/1/add-text
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 {
-    "content": "My second text!",
-    "sendDay": 1,
-    "sendHour": 0,
-    "sendMinute": 0
+    "content": "Here's a text!",
+    "sendDay": 0,
+    "sendHour": 14,
+    "sendMinute": 16
 }
 
 ### Get all texts in a specific campaign
 Get  http://localhost:8080/api/campaigns/1
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 ### Update name of existing campaign
 PUT  http://localhost:8080/api/campaigns/3
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 {
     "campaignName": "My UPDATED third campaign!"
@@ -46,12 +46,12 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwM
 ### Delete campaign
 DELETE http://localhost:8080/api/campaigns/2
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 ### Enroll contacts in campaign
 POST  http://localhost:8080/api/campaigns/1/enroll
 content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDA2MTYyLCJleHAiOjE2MzY0MDk3NjJ9.oxpoSPR3zfJqLSbNW_z-C_rWxalYXIGeCykdTrxm9OE
 
 {
     "contactsToEnroll": [

@@ -102,11 +102,6 @@ campaignsRouter.post('/:campaignId/enroll', async (req, res) => {
 
         const sendDate = generateSendDate(text, timeZone);
 
-        console.log(sendDate);
-
-        // // TODO: This is different than what's getting stored in PostgreSQL - there's some sort of conversion happening when the data is being inserted into the database, and I'm not sure if that's messing up the times
-        // console.log(sendDate);
-
         await pool.query(`
           INSERT INTO scheduled_texts (contact_id, text_id, send_date) 
           VALUES ($1, $2, $3)

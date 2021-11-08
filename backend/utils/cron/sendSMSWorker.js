@@ -1,7 +1,9 @@
+import queryScheduledTexts from "../scheduledTexts/queryScheduledTexts.js";
+
 const sendSMSWorker = () => {
   return {
     run() {
-      // X.sendSMS();
+      queryScheduledTexts();
     },
   };
 };

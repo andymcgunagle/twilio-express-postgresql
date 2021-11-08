@@ -9,7 +9,7 @@ const cronJobs = () => {
       new cronJob('00 * * * * *', () => {
         const time = new Date();
         console.log(`\n⏰ cronJobs running sendSMSWorker for ${time}`);
-        // sendSMSWorker.run();
+        sendSMSWorker.run();
       }, null, true, '');
     },
   };

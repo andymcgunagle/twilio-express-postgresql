@@ -32,3 +32,12 @@ export const getTextContent = async (textId) => {
   `, [textId]);
 };
 
+export const getScheduledTexts = async (currentDate) => {
+  return await pool.query(`
+  SELECT *
+  FROM scheduled_texts
+  WHERE send_date = $1;
+  `, [currentDate]);
+};
+
+
