@@ -1,14 +1,10 @@
 import bcrpyt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import pool from '../../database/databasePool.js';
+import { selectUser } from '../../database/queries/usersQueries.js';
 
 const findCompareSignExistingUser = async (email, password, res) => {
   try {
-    const existingUser = await pool.query(`
-      SELECT id, hashed_password  
-      FROM users 
-      WHERE email = ($1)
-    `, [email]);
+    const existingUser = await selectUser(email);
 
     if (existingUser.rowCount === 0) return res.status(400).json({ msg: 'User does not exist.' });
 

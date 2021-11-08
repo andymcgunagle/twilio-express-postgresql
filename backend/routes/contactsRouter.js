@@ -1,6 +1,10 @@
 import express from 'express';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
-import pool from '../database/databasePool.js';
+import {
+  insertNewContact,
+  selectAllContacts,
+  selectContact
+} from '../database/queries/contactsQueries.js';
 
 const contactsRouter = express.Router();
 
@@ -12,11 +16,7 @@ contactsRouter.post('/', authMiddleware, async (req, res) => {
     const { id } = req.user;
     const { phoneNumber, timeZone } = req.body;
 
-    const newContact = await pool.query(`
-      INSERT INTO contacts (user_id, phone_number, time_zone) 
-      VALUES ($1, $2, $3)
-      RETURNING *
-    `, [id, phoneNumber, timeZone]);
+    const newContact = await insertNewContact(id, phoneNumber, timeZone)
 
     res.status(200).send(newContact.rows[0]);
   } catch (error) {
@@ -31,11 +31,7 @@ contactsRouter.get('/', authMiddleware, async (req, res) => {
   try {
     const { id } = req.user;
 
-    const contacts = await pool.query(`
-      SELECT *
-      FROM contacts
-      WHERE user_id = $1;
-    `, [id]);
+    const contacts = await selectAllContacts(id);
 
     res.status(200).send(contacts.rows);
   } catch (error) {
@@ -46,15 +42,11 @@ contactsRouter.get('/', authMiddleware, async (req, res) => {
 // @route GET /api/contacts/:contactId
 // @desc
 // @access
-contactsRouter.get('/:contactId', async (req, res) => {
+contactsRouter.get('/:contactId', authMiddleware, async (req, res) => {
   try {
     const { contactId } = req.params;
 
-    const contact = await pool.query(`
-    SELECT *
-    FROM contacts
-    WHERE id = $1;
-    `, [contactId]);
+    const contact = await selectContact(contactId);
 
     res.status(200).send(contact.rows[0]);
   } catch (error) {
@@ -65,7 +57,7 @@ contactsRouter.get('/:contactId', async (req, res) => {
 // @route PUT /api/contacts/:contactId
 // @desc
 // @access
-contactsRouter.put('/:contactId', (req, res) => {
+contactsRouter.put('/:contactId', authMiddleware, (req, res) => {
   try {
 
   } catch (error) {
@@ -76,7 +68,7 @@ contactsRouter.put('/:contactId', (req, res) => {
 // @route DELETE /api/:contactId
 // @desc
 // @access
-contactsRouter.delete('/:contactId', (req, res) => {
+contactsRouter.delete('/:contactId', authMiddleware, (req, res) => {
   try {
 
   } catch (error) {

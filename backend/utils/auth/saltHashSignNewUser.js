@@ -1,17 +1,13 @@
 import jwt from 'jsonwebtoken';
 import bcrpyt from 'bcryptjs';
-import pool from '../../database/databasePool.js';
+import { insertNewUser } from '../../database/queries/usersQueries.js';
 
 const saltHashSignNewUser = async (inputEmail, inputPassword, res) => {
   try {
     const salt = await bcrpyt.genSalt(10);
     const hashedPassword = await bcrpyt.hash(inputPassword, salt);
 
-    const user = await pool.query(`
-      INSERT INTO users (email, hashed_password) 
-      VALUES ($1, $2)
-      RETURNING id, email
-    `, [inputEmail, hashedPassword]);
+    const user = await insertNewUser(inputEmail, hashedPassword);
 
     const { id, email } = user.rows[0];
 

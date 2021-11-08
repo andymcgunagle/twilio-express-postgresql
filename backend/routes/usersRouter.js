@@ -45,7 +45,7 @@ usersRouter.get('/current', authMiddleware, (req, res) => {
 // @route PUT /api/users/:id
 // @desc
 // @access
-usersRouter.put('/:id', (req, res) => {
+usersRouter.put('/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;
 
@@ -57,7 +57,7 @@ usersRouter.put('/:id', (req, res) => {
 // @route DELETE /api/users/:id
 // @desc
 // @access
-usersRouter.delete('/:id', (req, res) => {
+usersRouter.delete('/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;
 

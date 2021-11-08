@@ -77,7 +77,7 @@ campaignsRouter.get('/:campaignId', authMiddleware, async (req, res) => {
 // @route POST /api/campaigns/:campaignId/enroll
 // @desc Enrolls array of contacts in a campaign
 // @access
-campaignsRouter.post('/:campaignId/enroll', async (req, res) => {
+campaignsRouter.post('/:campaignId/enroll', authMiddleware, async (req, res) => {
   try {
     const { campaignId } = req.params;
     const { contactsToEnroll } = req.body;
@@ -112,7 +112,7 @@ campaignsRouter.put('/:campaignId', authMiddleware, async (req, res) => {
 // @route DELETE /api/campaigns/:campaignId
 // @desc
 // @access
-campaignsRouter.delete('/:campaignId', async (req, res) => {
+campaignsRouter.delete('/:campaignId', authMiddleware, async (req, res) => {
   try {
     const { campaignId } = req.params;
 
