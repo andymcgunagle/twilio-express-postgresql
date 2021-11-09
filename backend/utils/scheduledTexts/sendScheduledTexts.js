@@ -1,5 +1,5 @@
 import Twilio from 'twilio';
-import { getContactPhoneNumber, getTextContent } from '../../database/queries/campaignQueries.js';
+import { selectContact, getTextContent } from '../../database/queries/campaignsQueries.js';
 
 const sendScheduledTexts = (scheduledTexts) => {
   const client = new Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
@@ -7,8 +7,9 @@ const sendScheduledTexts = (scheduledTexts) => {
   scheduledTexts.forEach(async (scheduledText) => {
     const { contact_id, text_id } = scheduledText;
 
-    let phoneNumber = await getContactPhoneNumber(contact_id);
-    phoneNumber = phoneNumber.rows[0].phone_number;
+    const nameAndNumber = await selectContact(contact_id);
+    const phoneNumber = nameAndNumber.rows[0].phone_number;
+    const firstName = nameAndNumber.rows[0].first_name;
 
     let textContent = await getTextContent(text_id);
     textContent = textContent.rows[0].content;
@@ -17,8 +18,7 @@ const sendScheduledTexts = (scheduledTexts) => {
       const message = await client.messages.create({
         to: `+${phoneNumber}`,
         from: process.env.TWILIO_PHONE_NUMBER,
-        body: `Hi! ${textContent}`,
-        // body: `Hi ${contact.firstName}! ${text.content}`,
+        body: `Hi ${firstName}! ${textContent}`,
         // PROD-TODO: The callback URL you specify must be public and reachable from Twilios services, otherwise this won't work.
         // statusCallback: `http://localhost:8080/some-endpoint`,
       });

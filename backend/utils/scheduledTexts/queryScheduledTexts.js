@@ -1,6 +1,6 @@
 import sendScheduledTexts from "./sendScheduledTexts.js";
 import { setMilliseconds } from 'date-fns';
-import { getScheduledTexts } from "../../database/queries/campaignQueries.js";
+import { getScheduledTexts } from "../../database/queries/campaignsQueries.js";
 
 const queryScheduledTexts = async () => {
   try {

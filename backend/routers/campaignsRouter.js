@@ -8,13 +8,13 @@ import {
   insertNewCampaign,
   insertNewText,
   updateCampaign
-} from '../database/queries/campaignQueries.js';
+} from '../database/queries/campaignsQueries.js';
 
 const campaignsRouter = express.Router();
 
 // @route POST /api/campaigns
 // @desc Create a new campaign
-// @access
+// @access PRIVATE
 campaignsRouter.post('/', authMiddleware, async (req, res) => {
   try {
     const { id } = req.user;
@@ -30,7 +30,7 @@ campaignsRouter.post('/', authMiddleware, async (req, res) => {
 
 // @route GET /api/campaigns
 // @desc Get all campaigns associated with a specific user
-// @access
+// @access PRIVATE
 campaignsRouter.get('/', authMiddleware, async (req, res) => {
   try {
     const { id } = req.user;
@@ -45,7 +45,7 @@ campaignsRouter.get('/', authMiddleware, async (req, res) => {
 
 // @route POST /api/campaigns/:campaignId/add-text
 // @desc Add a text to a specific campaign
-// @access
+// @access PRIVATE
 campaignsRouter.post('/:campaignId/add-text', authMiddleware, async (req, res) => {
   try {
     const { id } = req.user;
@@ -61,7 +61,7 @@ campaignsRouter.post('/:campaignId/add-text', authMiddleware, async (req, res) =
 
 // @route GET /api/campaigns/:campaignId
 // @desc Get all texts in a specific campaign
-// @access
+// @access PRIVATE
 campaignsRouter.get('/:campaignId', authMiddleware, async (req, res) => {
   try {
     const { campaignId } = req.params;
@@ -76,7 +76,7 @@ campaignsRouter.get('/:campaignId', authMiddleware, async (req, res) => {
 
 // @route POST /api/campaigns/:campaignId/enroll
 // @desc Enrolls array of contacts in a campaign
-// @access
+// @access PRIVATE
 campaignsRouter.post('/:campaignId/enroll', authMiddleware, async (req, res) => {
   try {
     const { campaignId } = req.params;
@@ -95,7 +95,7 @@ campaignsRouter.post('/:campaignId/enroll', authMiddleware, async (req, res) => 
 
 // @route PUT /api/campaigns/:campaignId
 // @desc
-// @access
+// @access PRIVATE
 campaignsRouter.put('/:campaignId', authMiddleware, async (req, res) => {
   try {
     const { campaignId } = req.params;
@@ -111,7 +111,7 @@ campaignsRouter.put('/:campaignId', authMiddleware, async (req, res) => {
 
 // @route DELETE /api/campaigns/:campaignId
 // @desc
-// @access
+// @access PRIVATE
 campaignsRouter.delete('/:campaignId', authMiddleware, async (req, res) => {
   try {
     const { campaignId } = req.params;

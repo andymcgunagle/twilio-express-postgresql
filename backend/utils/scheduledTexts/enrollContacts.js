@@ -1,5 +1,5 @@
 import generateSendDate from './generateSendDate.js';
-import { insertScheduledTexts } from '../../database/queries/campaignQueries.js';
+import { insertScheduledTexts } from '../../database/queries/campaignsQueries.js';
 
 const enrollContacts = (contactsToEnroll, textsInCampaign) => {
   contactsToEnroll.forEach(async (contact) => {

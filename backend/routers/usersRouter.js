@@ -6,8 +6,8 @@ import { authMiddleware } from '../middlewares/authMiddleware.js';
 const usersRouter = express.Router();
 
 // @route POST /api/users/signup
-// @desc
-// @access
+// @desc Signs the user up
+// @access PUBLIC 
 usersRouter.post('/signup', (req, res) => {
   try {
     const { email, password } = req.body;
@@ -17,9 +17,10 @@ usersRouter.post('/signup', (req, res) => {
   };
 });
 
+
 // @route POST /api/users/login
-// @desc
-// @access
+// @desc Logs the user in
+// @access PUBLIC
 usersRouter.post('/login', (req, res) => {
   try {
     const { email, password } = req.body;
@@ -30,12 +31,11 @@ usersRouter.post('/login', (req, res) => {
 });
 
 // @route GET /api/users/current
-// @desc
-// @access
+// @desc Gets the id of the current user
+// @access PRIVATE
 usersRouter.get('/current', authMiddleware, (req, res) => {
   try {
     const { id } = req.user;
-
     res.status(200).json({ id });
   } catch (error) {
     console.error(error);
@@ -44,7 +44,7 @@ usersRouter.get('/current', authMiddleware, (req, res) => {
 
 // @route PUT /api/users/:id
 // @desc
-// @access
+// @access PRIVATE
 usersRouter.put('/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;
@@ -56,7 +56,7 @@ usersRouter.put('/:id', authMiddleware, (req, res) => {
 
 // @route DELETE /api/users/:id
 // @desc
-// @access
+// @access PRIVATE
 usersRouter.delete('/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;

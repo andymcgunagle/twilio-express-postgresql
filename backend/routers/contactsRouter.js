@@ -10,13 +10,13 @@ const contactsRouter = express.Router();
 
 // @route POST /api/contacts
 // @desc Creates a new contact
-// @access
+// @access PRIVATE
 contactsRouter.post('/', authMiddleware, async (req, res) => {
   try {
     const { id } = req.user;
-    const { phoneNumber, timeZone } = req.body;
+    const { firstName, phoneNumber, timeZone } = req.body;
 
-    const newContact = await insertNewContact(id, phoneNumber, timeZone)
+    const newContact = await insertNewContact(id, firstName, phoneNumber, timeZone)
 
     res.status(200).send(newContact.rows[0]);
   } catch (error) {
@@ -26,7 +26,7 @@ contactsRouter.post('/', authMiddleware, async (req, res) => {
 
 // @route GET /api/contacts
 // @desc
-// @access
+// @access PRIVATE
 contactsRouter.get('/', authMiddleware, async (req, res) => {
   try {
     const { id } = req.user;
@@ -41,7 +41,7 @@ contactsRouter.get('/', authMiddleware, async (req, res) => {
 
 // @route GET /api/contacts/:contactId
 // @desc
-// @access
+// @access PRIVATE
 contactsRouter.get('/:contactId', authMiddleware, async (req, res) => {
   try {
     const { contactId } = req.params;
@@ -56,7 +56,7 @@ contactsRouter.get('/:contactId', authMiddleware, async (req, res) => {
 
 // @route PUT /api/contacts/:contactId
 // @desc
-// @access
+// @access PRIVATE
 contactsRouter.put('/:contactId', authMiddleware, (req, res) => {
   try {
 
@@ -67,7 +67,7 @@ contactsRouter.put('/:contactId', authMiddleware, (req, res) => {
 
 // @route DELETE /api/:contactId
 // @desc
-// @access
+// @access PRIVATE
 contactsRouter.delete('/:contactId', authMiddleware, (req, res) => {
   try {
 

@@ -23,6 +23,7 @@ CREATE TABLE texts (
 CREATE TABLE contacts (
   id SERIAl PRIMARY KEY,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  first_name VARCHAR(255) NOT NULL,
   phone_number VARCHAR(255) NOT NULL,
   time_zone VARCHAR(255) NOT NULL
 );

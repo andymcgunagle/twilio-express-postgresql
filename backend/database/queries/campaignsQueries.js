@@ -16,9 +16,9 @@ export const getCampaigns = async (userId) => {
   `, [userId]);
 };
 
-export const getContactPhoneNumber = async (contactId) => {
+export const selectContact = async (contactId) => {
   return await pool.query(`
-    SELECT phone_number 
+    SELECT first_name, phone_number 
     FROM contacts 
     WHERE id = $1
   `, [contactId]);
