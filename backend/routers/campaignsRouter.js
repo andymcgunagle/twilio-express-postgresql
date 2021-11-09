@@ -93,7 +93,7 @@ campaignsRouter.post('/:campaignId/enroll', authMiddleware, async (req, res) => 
 });
 
 // @route PUT /api/campaigns/:campaignId
-// @desc
+// @desc Updates the name of a campaign
 // @access PRIVATE
 campaignsRouter.put('/:campaignId', authMiddleware, async (req, res) => {
   try {
@@ -109,7 +109,7 @@ campaignsRouter.put('/:campaignId', authMiddleware, async (req, res) => {
 });
 
 // @route DELETE /api/campaigns/:campaignId
-// @desc
+// @desc Deletes a campaign
 // @access PRIVATE
 campaignsRouter.delete('/:campaignId', authMiddleware, async (req, res) => {
   try {

@@ -25,7 +25,7 @@ contactsRouter.post('/', authMiddleware, async (req, res) => {
 });
 
 // @route GET /api/contacts
-// @desc
+// @desc Gets all contacts associated with a specific user
 // @access PRIVATE
 contactsRouter.get('/', authMiddleware, async (req, res) => {
   try {
@@ -40,7 +40,7 @@ contactsRouter.get('/', authMiddleware, async (req, res) => {
 });
 
 // @route GET /api/contacts/:contactId
-// @desc
+// @desc Gets a specific contact
 // @access PRIVATE
 contactsRouter.get('/:contactId', authMiddleware, async (req, res) => {
   try {
