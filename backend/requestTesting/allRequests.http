@@ -1,3 +1,5 @@
+### USERS REQUESTS ###
+
 ### 1) Sign up
 POST  http://localhost:8080/api/users/signup
 content-type: application/json
@@ -20,6 +22,8 @@ content-type: application/json
 Get  http://localhost:8080/api/users/current
 content-type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+### CAMPAIGNS REQUESTS ###
 
 ### Create new campaign
 POST  http://localhost:8080/api/campaigns
@@ -66,21 +70,6 @@ DELETE http://localhost:8080/api/campaigns/2
 content-type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
 
-### Add new contact
-POST  http://localhost:8080/api/contacts
-content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
-
-{
-    "phoneNumber": "17074908131",
-    "timeZone": "pacific"
-}
-
-### Get all contacts associated with a user
-Get  http://localhost:8080/api/contacts
-content-type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
-
 ### Enroll contacts in campaign
 POST  http://localhost:8080/api/campaigns/1/enroll
 content-type: application/json
@@ -89,8 +78,25 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwM
 {
     "contactsToEnroll": [
         {
-            "contactId": 4, 
-            "timeZone": "pacific"
+            "contactId": 4
         }
     ]
 }
+
+### CONTACTS REQUESTS ###
+
+### Add new contact
+POST  http://localhost:8080/api/contacts
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE
+
+{
+    "firstName": "Andy",
+    "phoneNumber": "17074908131",
+    "timeZone": "pacific"
+}
+
+### Get all contacts associated with a user
+Get  http://localhost:8080/api/contacts
+content-type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjM2NDAwMzkxLCJleHAiOjE2MzY0MDM5OTF9.RxnMDrKUEu3FT2Lgl0YEjzOiu2uPGui9MLn9sjWMeEE

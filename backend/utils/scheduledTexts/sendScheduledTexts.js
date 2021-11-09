@@ -7,12 +7,9 @@ const sendScheduledTexts = (scheduledTexts) => {
   scheduledTexts.forEach(async (scheduledText) => {
     const { contact_id, text_id } = scheduledText;
 
-    const nameAndNumber = await selectContact(contact_id);
-    const phoneNumber = nameAndNumber.rows[0].phone_number;
-    const firstName = nameAndNumber.rows[0].first_name;
+    const { firstName, phoneNumber } = await selectContact(contact_id);
 
     let textContent = await getTextContent(text_id);
-    textContent = textContent.rows[0].content;
 
     try {
       const message = await client.messages.create({

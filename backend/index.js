@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Run cron jobs
-// cronJobs.start();
+cronJobs.start();
 
 // Middlewares
 app.use(express.json());

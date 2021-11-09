@@ -22,7 +22,7 @@ campaignsRouter.post('/', authMiddleware, async (req, res) => {
 
     const newCampaign = await insertNewCampaign(id, campaignName);
 
-    res.status(200).json(newCampaign.rows[0]);
+    res.status(200).json(newCampaign);
   } catch (error) {
     console.error(error);
   };
@@ -37,7 +37,7 @@ campaignsRouter.get('/', authMiddleware, async (req, res) => {
 
     const campaigns = await getCampaigns(id);
 
-    res.status(200).json(campaigns.rows);
+    res.status(200).json(campaigns);
   } catch (error) {
     console.error(error);
   };
@@ -53,7 +53,7 @@ campaignsRouter.post('/:campaignId/add-text', authMiddleware, async (req, res) =
 
     const newText = await insertNewText(req.body, id, campaignId);
 
-    res.status(200).json(newText.rows[0]);
+    res.status(200).json(newText);
   } catch (error) {
     console.error(error);
   };
@@ -68,7 +68,7 @@ campaignsRouter.get('/:campaignId', authMiddleware, async (req, res) => {
 
     const textsInCampaign = await getTextsInCampaign(campaignId)
 
-    res.status(200).json(textsInCampaign.rows);
+    res.status(200).json(textsInCampaign);
   } catch (error) {
     console.error(error);
   };
@@ -83,7 +83,6 @@ campaignsRouter.post('/:campaignId/enroll', authMiddleware, async (req, res) => 
     const { contactsToEnroll } = req.body;
 
     let textsInCampaign = await getTextsInCampaign(campaignId);
-    textsInCampaign = textsInCampaign.rows;
 
     enrollContacts(contactsToEnroll, textsInCampaign);
 
@@ -103,7 +102,7 @@ campaignsRouter.put('/:campaignId', authMiddleware, async (req, res) => {
 
     const campaign = await updateCampaign(campaignName, campaignId);
 
-    res.status(200).json(campaign.rows[0]);
+    res.status(200).json(campaign);
   } catch (error) {
     console.error(error);
   };
@@ -118,7 +117,7 @@ campaignsRouter.delete('/:campaignId', authMiddleware, async (req, res) => {
 
     const deletedCampaign = await deleteCampaign(campaignId);
 
-    res.status(200).json(deletedCampaign.rows[0]);
+    res.status(200).json(deletedCampaign);
   } catch (error) {
     console.error(error);
   };

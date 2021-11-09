@@ -18,7 +18,7 @@ contactsRouter.post('/', authMiddleware, async (req, res) => {
 
     const newContact = await insertNewContact(id, firstName, phoneNumber, timeZone)
 
-    res.status(200).send(newContact.rows[0]);
+    res.status(200).send(newContact);
   } catch (error) {
     console.error(error);
   };
@@ -33,7 +33,7 @@ contactsRouter.get('/', authMiddleware, async (req, res) => {
 
     const contacts = await selectAllContacts(id);
 
-    res.status(200).send(contacts.rows);
+    res.status(200).send(contacts);
   } catch (error) {
     console.error(error);
   };
@@ -48,7 +48,7 @@ contactsRouter.get('/:contactId', authMiddleware, async (req, res) => {
 
     const contact = await selectContact(contactId);
 
-    res.status(200).send(contact.rows[0]);
+    res.status(200).send(contact);
   } catch (error) {
     console.error(error);
   };

@@ -7,9 +7,7 @@ const saltHashSignNewUser = async (inputEmail, inputPassword, res) => {
     const salt = await bcrpyt.genSalt(10);
     const hashedPassword = await bcrpyt.hash(inputPassword, salt);
 
-    const user = await insertNewUser(inputEmail, hashedPassword);
-
-    const { id, email } = user.rows[0];
+    const { id, email } = await insertNewUser(inputEmail, hashedPassword);
 
     const token = jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: 3600 });
 

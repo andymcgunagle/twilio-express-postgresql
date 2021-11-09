@@ -1,3 +1,4 @@
+--@block
 CREATE TABLE users (
   id SERIAl PRIMARY KEY,
   email VARCHAR(255) NOT NULL,
