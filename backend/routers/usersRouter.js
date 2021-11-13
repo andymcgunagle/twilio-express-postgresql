@@ -2,6 +2,7 @@ import express from 'express';
 import saltHashSignNewUser from '../utils/auth/saltHashSignNewUser.js';
 import findCompareSignExistingUser from '../utils/auth/findCompareSignExistingUser.js';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
+import { deleteUser } from '../database/queries/usersQueries.js';
 
 const usersRouter = express.Router();
 
@@ -60,7 +61,8 @@ usersRouter.put('/:id', authMiddleware, (req, res) => {
 usersRouter.delete('/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;
-
+    const deletedUser = deleteUser(id);
+    res.status(200).json(deletedUser);
   } catch (error) {
     console.error(error);
   };

@@ -39,3 +39,24 @@ export const selectContactTimeZone = async (contactId) => {
 
   return result.rows[0].time_zone;
 };
+
+// export const updateContact = async (contactId) => {
+//   const result = await pool.query(`
+//     UPDATE contacts 
+//     SET  = $2 
+//     WHERE id = $1 
+//     RETURNING *
+//   `, [contactId]);
+
+//   return result.rows[0];
+// };
+
+export const deleteContact = async (contactId) => {
+  const result = await pool.query(`
+    DELETE FROM contacts 
+    WHERE id = $1 
+    RETURNING *
+  `, [contactId]);
+
+  return result.rows[0];
+};

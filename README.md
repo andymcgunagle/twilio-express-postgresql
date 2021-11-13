@@ -1,4 +1,4 @@
-# Text Campaigns Practice Project using Twilio, Express, PostgreSQL
+# Text Campaigns Practice Project using Twilio, Express, and PostgreSQL
 
 ## Database
 

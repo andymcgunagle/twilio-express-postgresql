@@ -1,6 +1,7 @@
 import express from 'express';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 import {
+  deleteContact,
   insertNewContact,
   selectAllContacts,
   selectContact
@@ -70,6 +71,10 @@ contactsRouter.put('/:contactId', authMiddleware, (req, res) => {
 // @access PRIVATE
 contactsRouter.delete('/:contactId', authMiddleware, (req, res) => {
   try {
+    const { contactId } = req.params;
+
+    const deletedContact = deleteContact(contactId);
+
 
   } catch (error) {
     console.error(error);

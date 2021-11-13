@@ -17,3 +17,24 @@ export const selectUser = async (email) => {
     WHERE email = ($1)
   `, [email]);
 };
+
+// export const updateUser = async (userId) => {
+//   const result = await pool.query(`
+//     UPDATE users 
+//     SET  = $2 
+//     WHERE id = $1 
+//     RETURNING *
+//   `, [userId]);
+
+//   return result.rows[0];
+// };
+
+export const deleteUser = async (userId) => {
+  const result = await pool.query(`
+    DELETE FROM users 
+    WHERE id = $1 
+    RETURNING *
+  `, [userId]);
+
+  return result.rows[0];
+};
