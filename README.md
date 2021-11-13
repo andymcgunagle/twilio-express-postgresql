@@ -2,7 +2,7 @@
 
 ## Database
 
-- Open a terminal window, the create a database: `createdb name_of_database`
+- Open a terminal instance and create a database: `createdb name_of_database`
 
 - Run each block in the `twilio_express_postgresql_db@localhost.session.sql` file to create tables in the PostgreSQL database.
 
@@ -21,6 +21,8 @@
 - `POST /api/users/login`: Logs the user in.
 
 - `GET /api/users/current`: Gets the id of the current user.
+
+- `DELETE /api/users/:id`: Deletes a specific user.
 
 ### campaignsRouter
 
@@ -45,3 +47,5 @@
 - `GET /api/contacts`: Gets all contacts associated with a specific user.
 
 - `GET /api/contacts/:contactId`: Gets a specific contact.
+
+- `DELETE /api/contacts/:contactId`: Deletes a specific contact.

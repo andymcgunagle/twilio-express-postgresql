@@ -75,7 +75,7 @@ contactsRouter.delete('/:contactId', authMiddleware, (req, res) => {
 
     const deletedContact = deleteContact(contactId);
 
-
+    res.status(200).json(deletedContact);
   } catch (error) {
     console.error(error);
   };

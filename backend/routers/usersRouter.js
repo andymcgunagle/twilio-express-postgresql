@@ -12,6 +12,7 @@ const usersRouter = express.Router();
 usersRouter.post('/signup', (req, res) => {
   try {
     const { email, password } = req.body;
+
     saltHashSignNewUser(email, password, res);
   } catch (error) {
     console.error(error);
@@ -25,6 +26,7 @@ usersRouter.post('/signup', (req, res) => {
 usersRouter.post('/login', (req, res) => {
   try {
     const { email, password } = req.body;
+
     findCompareSignExistingUser(email, password, res);
   } catch (error) {
     console.error(error);
@@ -37,6 +39,7 @@ usersRouter.post('/login', (req, res) => {
 usersRouter.get('/current', authMiddleware, (req, res) => {
   try {
     const { id } = req.user;
+
     res.status(200).json({ id });
   } catch (error) {
     console.error(error);
@@ -61,7 +64,9 @@ usersRouter.put('/:id', authMiddleware, (req, res) => {
 usersRouter.delete('/:id', authMiddleware, (req, res) => {
   try {
     const { id } = req.params;
+
     const deletedUser = deleteUser(id);
+
     res.status(200).json(deletedUser);
   } catch (error) {
     console.error(error);
